@@ -1,0 +1,208 @@
+<dsx>
+
+    <scene root="root" axis_length="2" />
+        
+    <views default="x1" >
+
+        <perspective id="x1" near="0.4" far="300" angle="10">
+
+            <from x="35" y="40" z="35" />
+            <to x="0" y="0.2" z="0" />
+
+        </perspective>
+
+    </views>
+    
+
+    <illumination doublesided="0" local="1" >
+    
+        <ambient r="0.3" g="0.3" b="0.3" a="1.0" />
+        <background r="0" g="0" b="0" a="1.0" />
+        
+    </illumination>
+    
+    
+    <lights>
+	
+		<omni id="l1" enabled="1" >
+            <location x="15" y="15" z="15" w="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="0.8" g="0.8" b="0.8" a="1.0" />
+            <specular r="0.4" g="0.3" b="0.5" a="1.0" />
+        </omni>
+
+        <omni id="l2" enabled="1" >
+            <location x="-15" y="-20" z="20" w="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
+            <specular r="0.1" g="0.1" b="0.1" a="1.0" />
+        </omni>
+
+        <omni id="l3" enabled="1" >
+            <location x="1" y="1" z="1" w="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="0.4" g="0.3" b="0.5" a="1.0" />
+        </omni>
+
+        <omni id="l4" enabled="1" >
+            <location x="-0" y="-1" z="1" w="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
+            <specular r="0.1" g="0.1" b="0.1" a="1.0" />
+        </omni>
+        
+        <omni id="l5" enabled="1" >
+            <location x="0.5" y="0.5" z="2" w="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
+            <specular r="0.1" g="0.1" b="0.1" a="1.0" />
+        </omni>
+
+
+    </lights>
+        
+    <textures>
+        <texture id="g1" file="resources/grass.png" length_s="2.5" length_t="2.5" />
+		<texture id="g2" file="resources/rough_wood.png" length_s="4" length_t="2" />
+		<texture id="g3" file="resources/rough_wood.png" length_s="0.5" length_t="0.5" />
+    </textures>
+    
+    <materials>
+        <material id="w1" >
+            <emission r="0" g="0" b="0" a="1" />
+            <ambient r="0.18" g="0.13" b="0.05" a="1" />
+            <diffuse r="0.89" g="0.55" b="0.09" a="1" />
+            <specular r="0.18" g="0.13" b="0.05" a="1" />
+            <shininess value="3" />
+        </material>
+		
+		<!-- Fluorescent blue -->
+        <material id="s1" >
+            <emission r="0.6" g="0.6" b="1" a="1" />
+            <ambient r="0" g="0" b="0" a="1" />
+            <diffuse r="0" g="0" b="0" a="1" />
+            <specular r="0" g="0" b="0" a="1" />
+            <shininess value="10" />
+        </material>
+    </materials>
+    
+    <transformations>
+		<transformation id="t1">
+            <translate x="0" y="-4" z="0" />
+			<rotate axis="x" angle="90"/>
+        </transformation>
+		
+		<transformation id="t2">
+			<translate x="0" y="-2" z="10" />
+			<rotate axis="x" angle="90"/>
+		</transformation>
+		
+		<transformation id="t3">
+            <translate x="0" y="-2" z="-10" />
+			<rotate axis="x" angle="90"/>
+        </transformation>
+		
+    </transformations>
+    
+    <animations>
+    </animations>
+
+    <primitives>
+		
+		<primitive id="floor">
+			<rectangle x1="-30" y1="-30" x2="30" y2="30"/>
+		</primitive>
+		
+		<primitive id="bench">
+			<cylinder base="1" top="1" height="2.5" slices="15" stacks="5" />
+		</primitive>
+		
+		<primitive id="table">
+			<table length_s="0.2" length_t="0.5" />
+		</primitive>
+	
+    </primitives>
+       
+    <components>
+        <!-- Root Element -->        
+        <component id="root">        
+            <transformation>
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g1" />
+            <children>
+				<componentref id="floor"/>
+				<componentref id="bench1"/>
+				<componentref id="bench2"/>
+                <componentref id="table"/>
+            </children>       
+        </component>
+		
+		<component id="table">        
+            <transformation>
+				<translate x="0" y="-0.5" z="0" />
+                <scale x="10" y="10" z="17" />
+                <rotate axis="x" angle="-90" />
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g3" />
+            <children>
+				<primitiveref id="table"/>
+            </children>       
+        </component>
+		
+		<component id="floor">        
+            <transformation>
+				<transformationref id="t1"/>
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g1" />
+            <children>
+				<primitiveref id="floor"/>
+            </children>       
+        </component>
+		
+		<component id="bench1">        
+            <transformation>
+				<transformationref id="t2"/>
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g2" />
+            <children>
+				<primitiveref id="bench"/>
+            </children>       
+        </component>
+		
+		<component id="bench2">        
+            <transformation>
+				<transformationref id="t3"/>
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g2" />
+            <children>
+				<primitiveref id="bench"/>
+            </children>       
+        </component>
+    </components>
+</dsx>

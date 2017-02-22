@@ -1,0 +1,240 @@
+<dsx>
+
+    <scene root="root" axis_length="2" />
+        
+    <views default="x1" >
+
+        <perspective id="x1" near="0.4" far="300" angle="10">
+
+            <from x="35" y="40" z="35" />
+            <to x="0" y="0.2" z="0" />
+
+        </perspective>
+
+    </views>
+    
+
+    <illumination doublesided="0" local="1" >
+    
+        <ambient r="0.3" g="0.3" b="0.3" a="1.0" />
+        <background r="0" g="0" b="0" a="1.0" />
+        
+    </illumination>
+    
+    
+    <lights>
+
+        <omni id="l1" enabled="1" >
+            <location x="15" y="15" z="15" w="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="0.4" g="0.3" b="0.5" a="1.0" />
+        </omni>
+
+        <omni id="l2" enabled="1" >
+            <location x="-15" y="-20" z="20" w="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
+            <specular r="0.1" g="0.1" b="0.1" a="1.0" />
+        </omni>
+
+        <omni id="l3" enabled="1" >
+            <location x="1" y="1" z="1" w="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="0.4" g="0.3" b="0.5" a="1.0" />
+        </omni>
+
+        <omni id="l4" enabled="1" >
+            <location x="-0" y="-1" z="1" w="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
+            <specular r="0.1" g="0.1" b="0.1" a="1.0" />
+        </omni>
+        
+        <omni id="l5" enabled="1" >
+            <location x="0.5" y="0.5" z="2" w="1" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0" />
+            <specular r="0.1" g="0.1" b="0.1" a="1.0" />
+        </omni>
+
+
+    </lights>
+        
+    <textures>
+        <texture id="g1" file="resources/sand.png" length_s="5" length_t="5" />
+		<texture id="g2" file="resources/beachTowel.jpg" length_s="5" length_t="5" />
+		<texture id="g3" file="resources/ball.jpg" length_s="1" length_t="1" />
+    </textures>
+    
+    <materials>
+         <material id="w1" >
+            <emission r="0" g="0" b="0" a="1" />
+            <ambient r="0.4" g="0.3" b="0.05" a="1" />
+            <diffuse r="0.90" g="0.90" b="0.90" a="1" />
+            <specular r="0.6" g="0.6" b="0.6" a="1" />
+            <shininess value="1" />
+        </material>
+		
+		<!-- Fluorescent blue -->
+        <material id="s1" >
+            <emission r="0.6" g="0.6" b="1" a="1" />
+            <ambient r="0" g="0" b="0" a="1" />
+            <diffuse r="0" g="0" b="0" a="1" />
+            <specular r="0" g="0" b="0" a="1" />
+            <shininess value="10" />
+        </material>
+    </materials>
+    
+    <transformations>
+		<transformation id="t1">
+            <translate x="0" y="-0.3" z="0" />
+			<rotate axis="x" angle="90"/>
+        </transformation>
+		
+		<transformation id="t2">
+			<translate x="0" y="-0.25" z="0" />
+			<rotate axis="x" angle="90"/>
+			<scale x="1.5" y="1.8" z="2" />
+		</transformation>
+		
+		<transformation id="t3">
+            <translate x="6" y="0.8" z="-12" />
+			<rotate axis="x" angle="90"/>
+        </transformation>
+		
+		<transformation id="t4">
+            <translate x="-3" y="0.8" z="11" />
+			<rotate axis="x" angle="90"/>
+        </transformation>
+		
+		<transformation id="t5">
+            <translate x="8" y="0.85" z="9" />
+			<rotate axis="x" angle="90"/>
+			<rotate axis="z" angle="30"/>
+			<scale x="1.5" y="1.2" z="1"/>
+        </transformation>
+    </transformations>
+    
+    <animations>
+    </animations>
+
+    <primitives>				
+		<primitive id="floor">
+			<rectangle x1="-30" y1="-30" x2="30" y2="30"/>
+		</primitive>
+		
+		<primitive id="towel">
+			<rectangle x1="-5" y1="-5" x2="5" y2="5"/>
+		</primitive>
+		
+		<primitive id="ball">
+			<sphere radius="1.2" slices="8" stacks="8" />
+		</primitive>
+		
+		<primitive id="boia">
+			<torus inner="0.5" outer="1.5" slices="10" loops="10" /> 
+		</primitive>
+		
+		<primitive id="vehicle">
+			<vehicle/> 
+		</primitive>
+    </primitives>
+       
+    <components>
+        <!-- Root Element -->        
+        <component id="root">        
+            <transformation>
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g1" />
+            <children>
+				<componentref id="floor"/>
+				<componentref id="towel"/>
+				<componentref id="ball"/>
+				<componentref id="boia"/>
+				<componentref id="vehicle"/>
+            </children>       
+        </component>
+		
+		<component id="floor">        
+            <transformation>
+				<transformationref id="t1"/>
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g1" />
+            <children>
+				<primitiveref id="floor"/>
+            </children>       
+        </component>
+		
+		<component id="towel">        
+            <transformation>
+				<transformationref id="t2"/>
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g2" />
+            <children>
+				<primitiveref id="towel"/>
+            </children>       
+        </component>
+		
+		<component id="ball">        
+            <transformation>
+				<transformationref id="t3"/>
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g3" />
+            <children>
+				<primitiveref id="ball"/>
+            </children>       
+        </component>
+		
+		<component id="boia">        
+            <transformation>
+				<transformationref id="t4"/>
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g3" />
+            <children>
+				<primitiveref id="boia"/>
+            </children>       
+        </component>
+		
+		<component id="vehicle">        
+            <transformation>
+				<transformationref id="t5"/>
+            </transformation>
+            <animation>
+            </animation>
+            <materials>
+                <material id="w1" />
+            </materials>
+            <texture id="g3" />
+            <children>
+				<primitiveref id="vehicle"/>
+            </children>       
+        </component>
+    </components>
+</dsx>
